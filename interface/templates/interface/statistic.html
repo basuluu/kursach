@@ -1,0 +1,23 @@
+{% extends 'interface/base.html' %}
+{% block content %}
+<table border="4" width="1000px">
+  <caption> Ход товара </caption>
+  <tr>
+    <th>Наиманование</th>
+    <th>Число продаж</th>
+    <th>Сумма</th>
+  </tr>
+  {% for item in crunch.items %}
+    <tr>
+      <td>{{item.0}}</td>
+      <td>{{item.1}}</td>
+      <td>
+        {% for name, price in cost.items %}
+          {% if name == item.0 %}
+            {% widthratio price 1 item.1%}
+          {% endif %}
+        {% endfor %}
+      </td>
+    </tr>
+  {% endfor %}
+{% endblock %}

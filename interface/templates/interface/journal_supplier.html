@@ -1,0 +1,42 @@
+{% extends 'interface/base.html' %}
+{% block content %}
+  {% if obj %}
+  <form method="POST">{% csrf_token %}
+    <button type="submit">Показать сначала старые</button>
+  </form>
+  <form method="GET">{% csrf_token %}
+    <button type="submit">Показать сначала новые</button>
+  </form>
+    <table border="4" width="1000px">
+      <caption> Журнал Поставщиков </caption>
+      <tr>
+        <th>Id</th>
+        <th>Поставщик</th>
+        <th>Телефон</th>
+        <th>Категория</th>
+        <th>Страна</th>
+        <th></th>
+      </tr>
+      {% for record in obj %}
+        <tr>
+          <td>{{record.pk}}</td>
+          <td>{{record.sup_name}}</td>
+          <td>{{record.phone}}</td>
+          <td>{{record.category}}</td>
+          <td>{{record.country}}</td>
+          <td>
+            <a href="/admin/interface/journal_supplier/{{record.pk}}">
+              <span class="glyphicon glyphicon-pencil"></span
+            </a>
+          <td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <h1>Записей поставщиков, не обнаружено(</h1>
+  {% endif %}
+  <a href="{% url 'add_sup' %}">
+    <span class="glyphicon glyphicon-plus">
+    </span> Добавить поставщика
+  </a>
+{% endblock %}

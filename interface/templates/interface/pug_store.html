@@ -1,0 +1,29 @@
+{% extends 'interface/base.html' %}
+
+{% block content %}
+  <div class='left-menu'>
+    {% if request.user.username == 'basuluu' %}
+      <a href="{% url 'add_item' %}">
+        <span class="glyphicon glyphicon-plus">
+        </span> Добавить товар
+      </a>
+    {% endif %}
+    <form action="/search/" method="GET">
+      <input type="text" name="q" placeholder="Поиск">
+    </form>
+  </div>
+  <div class='items'>
+    {% for item in items %}
+    <a href="{% url 'detail' id=item.id %}">
+      <div class='item'>
+        <div class='item-image'>
+          <img src='{{ item.item_photo.url }}' width='250px' height='190px'>
+        </div>
+        <div class='item-info'>
+          {{item.item_name}}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+{% endblock %}

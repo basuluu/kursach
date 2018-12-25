@@ -1,0 +1,36 @@
+{% extends 'interface/base.html' %}
+
+{% block content %}
+  {% if items %}
+    <table border="2" width="800px">
+      <caption> Корзина </caption>
+      <tr>
+        <th>Название товара</th>
+        <th>Цена товара</th>
+        <th>Количество</th>
+        <th>Удалить товар</th>
+      <tr>
+        {% for item in items %}
+          <tr><td>{{item.id_bin.id_item.item_name}}</td>
+            <td>{{item.id_bin.id_item.item_cost}}</td>
+            <td>{{item.id_bin.num}}</td>
+            <td>
+              <form method="GET" name='Delete'>
+                <input type="submit" name='{{item.id_bin.id}}' value="Очистить"/>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr><td colspan="4" class='total'>Сумма к оплате: {{total}}</td></tr>
+    </table>
+    <form method="POST">{% csrf_token %}
+      <button type="submit">Оформить доставку</button>
+    </form>
+    <form method="GET" name='Delete'>
+      <input type="submit" name='Clear' value="Clear"/>
+    </form>
+  {% else %}
+    <h1> Корзина пуста :( </h1>
+  {% endif %}
+  <p></p>
+{% endblock%}

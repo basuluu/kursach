@@ -1,0 +1,48 @@
+{% load static %}
+
+<html>
+  <head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  </head>
+  <body>
+    <div class='header'>
+      <h1><a href="/">Pug_store</a></h1>
+    </div>
+    Привествуем вас, {{request.user}}!
+    {% if request.user.is_anonymous %}
+      <p></p>
+      <a href="/register/">Регистрация</a>
+      <a href="/login/">Войти</a>
+    {% else %}
+      <a href="/logout/">Выйти</a>
+    {% endif %}
+    <div class ='def-margin'>
+      <a href="{% url 'bin_v' %}">
+        <span class="glyphicon glyphicon-shopping-cart">
+        </span> Корзина
+      </a>
+      {% if request.user.username == "basuluu" %}
+        <a href="/journal_req/">
+          <span class="glyphicon glyphicon-book">
+          </span> Журнал заказов
+        </a>
+        <a href="/journal_sup/">
+          <span class="glyphicon glyphicon-book">
+          </span> Журнал поставщиков
+        </a>
+        <a href="/journal_income/">
+          <span class="glyphicon glyphicon-paperclip">
+          </span> Приходные накладные
+        </a>
+        <a href="/statistic/">
+          <span class="glyphicon glyphicon-list-alt">
+          </span> Ход товара
+        </a>
+      {% endif %}
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

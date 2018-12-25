@@ -1,0 +1,56 @@
+{% extends 'interface/base.html' %}
+{% block content %}
+  {% if req %}
+  <form method="POST">{% csrf_token %}
+    <button type="submit">Показать сначала старые</button>
+  </form>
+  <form method="GET">{% csrf_token %}
+    <button type="submit">Показать сначала новые</button>
+  </form>
+  <table border="4" width="1000px">
+    <caption> Журнал заказов </caption>
+    <tr>
+      <th>id</th>
+      <th>user</th>
+      <th>имя</th>
+      <th>телефон</th>
+      <th>товар</th>
+      <th>количество</th>
+      <th>status</th>
+    </tr>
+  {% for record in req %}
+    <tr>
+      <td>{{record.id}}</td>
+      <td>{{record.user}}</td>
+      <td>{{record.name}}</td>
+      <td>{{record.phone}}</td>
+      <td>
+        {% for bin in bins %}
+          {% if bin.id_req.id == record.id %}
+            {{ bin.id_bin.id_item.item_name }}
+            <hr></hr>
+          {% endif %}
+        {% endfor %}
+      </td>
+      <td>
+        {% for bin in bins %}
+          {% if bin.id_req.id == record.id %}
+            {{ bin.id_bin.num }}
+            <hr></hr>
+          {% endif %}
+        {% endfor %}
+     </td>
+     <td>
+     {% if record.status %}
+      Доставлен
+     {% else %}
+      Формируется
+     {% endif %}
+     <p></p>
+     <a href="/admin/interface/journal_request/{{record.id}}">изменить</a>
+     </td>
+    </tr>
+  {% endfor %}
+  </table>
+{% endif %}
+{% endblock %}

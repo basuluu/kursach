@@ -1,0 +1,102 @@
+.header{
+  background-color: #ff5050;
+  margin-top: 0;
+  padding: 20px 20px 20px 40px
+}
+caption{
+  margin: 15px;
+  font-weight: bold;
+  font-size: 150%;
+}
+th, td{
+  text-align: center;
+  border: 2px solid black;
+}
+.total{
+  padding-left: 5px;
+  text-align: left;
+  font-style: italic;
+}
+hr{
+  margin-top: 5px;
+  margin-bottom: 0px;
+  border: 1px solid black;
+}
+.def-margin{
+  margin-top: 30px;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.left-menu{
+  width: 20%;
+  height: 90%;
+  padding-top: 5%;
+  padding-right: 5%;
+  float: left;
+}
+
+.items{
+  width: 80%;
+  float: left;
+}
+
+.item{
+  margin-right: 3%;
+  margin-bottom: 5%;
+  width: 30%;
+  float: left;
+  height: 240px;
+}
+
+.item-image{
+  width: 250px;
+  height: 190px;
+}
+
+.item-info{
+  height: 50px;
+  font-size: 30px;
+  font-style: italic;
+  text-align: center;
+}
+
+.image-detail{
+  width: 600px;
+  height: 450px;
+  float: left;
+}
+.tmp{
+  border: 1px solid lightgrey;
+  height: 500px;
+  position: static;
+}
+.item-detail-info{
+  padding-top: 80px;
+  padding-left: 70px;
+  height: 450px;
+  width: 470px;
+  float: left;
+}
+
+.admin-menu{
+  float: left;
+  border: 1px solid grey;
+}
+
+li{
+  width: 330px;
+  list-style: none;
+  padding: 15px;
+}
+
+.left{
+  text-align: left;
+  width: 145px;
+  float: left;
+}
+.right{
+  width: 145px;
+  text-align: left;
+  float: left;
+}

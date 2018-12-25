@@ -1,0 +1,42 @@
+{% extends 'interface/base.html' %}
+{% block content %}
+  {% if obj %}
+  <form method="POST">{% csrf_token %}
+    <button type="submit">Показать сначала старые</button>
+  </form>
+  <form method="GET">{% csrf_token %}
+    <button type="submit">Показать сначала новые</button>
+  </form>
+    <table border="4" width="1000px">
+      <caption> Журнал Поставщиков </caption>
+      <tr>
+        <th>Id</th>
+        <th>Дата</th>
+        <th>Поставщик</th>
+        <th>Товар</th>
+        <th>Количество</th>
+        <th></th>
+      </tr>
+      {% for record in obj %}
+        <tr>
+          <td>{{record.pk}}</td>
+          <td>{{record.date}}</td>
+          <td>{{record.sup}}</td>
+          <td>{{record.item}}</td>
+          <td>{{record.num}}</td>
+          <td>
+            <a href="/admin/interface/income/{{record.pk}}">
+              <span class="glyphicon glyphicon-pencil"></span
+            </a>
+          <td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <h1>Расходные накладные, не обнаружены(</h1>
+  {% endif %}
+  <a href="{% url 'add_income' %}">
+    <span class="glyphicon glyphicon-plus">
+    </span> Добавить накладную
+  </a>
+{% endblock %}
