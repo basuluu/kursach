@@ -6,3 +6,4 @@ admin.site.register(journal_request)
 admin.site.register(journal_supplier)
 admin.site.register(income)
 # Register your models here.
+#
